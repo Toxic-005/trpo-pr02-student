@@ -69,18 +69,17 @@
     font-size: rem(14px);
   }
 
+  // Цена над кнопкой: одинаковая высота подвала при любой длине цены.
   &__footer {
     margin-top: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
     gap: space(0.5);
   }
 
   &__price {
     font-size: rem(18px);
     font-weight: 700;
+    white-space: nowrap;
   }
 }
 

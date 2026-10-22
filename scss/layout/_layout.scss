@@ -115,6 +115,9 @@
 
     &__link {
       flex: 1;
+      padding-inline: space(0.25);
+      font-size: rem(14px);
+      white-space: nowrap;
       text-align: center;
       background: rgba($surface, 0.08);
     }

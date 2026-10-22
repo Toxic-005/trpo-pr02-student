@@ -163,6 +163,9 @@ code {
   }
   .site-nav__link {
     flex: 1;
+    padding-inline: 0.25rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
     text-align: center;
     background: rgba(255, 255, 255, 0.08);
   }
@@ -332,7 +335,7 @@ code {
 }
 .catalog__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
 }
 
@@ -374,15 +377,13 @@ code {
 }
 .product-card__footer {
   margin-top: auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
   gap: 0.5rem;
 }
 .product-card__price {
   font-size: 1.125rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .rating {
