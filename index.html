@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Учебная лавка — каталог учебных товаров</title>
+  <meta name="description" content="Практическая работа №2: адаптивный каталог на HTML и SCSS по данным catalog.csv">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="#catalog">Учебная лавка</a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a class="site-nav__link" href="#catalog">Каталог</a>
+        <a class="site-nav__link" href="#about">О каталоге</a>
+        <a class="site-nav__link" href="#footer">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="catalog">
+    <aside class="filters" aria-labelledby="filters-title">
+      <h2 class="filters__title" id="filters-title">Фильтры</h2>
+      <form class="filters__form" id="filters-form">
+        <div class="filters__field filters__field--wide">
+          <label class="filters__label" for="filter-search">Поиск по названию</label>
+          <input class="filters__input" id="filter-search" name="search" type="search" placeholder="Например, товар 12" autocomplete="off">
+        </div>
+
+        <fieldset class="filters__group">
+          <legend class="filters__label">Категория</legend>
+          <div class="filters__options" id="filter-categories">
+            <!-- Чекбоксы категорий строятся из catalog.csv -->
+          </div>
+        </fieldset>
+
+        <div class="filters__field">
+          <label class="filters__label" for="filter-price">Цена до, ₽: <output id="filter-price-value">—</output></label>
+          <input class="filters__range" id="filter-price" name="maxPrice" type="range" step="5">
+        </div>
+
+        <div class="filters__field">
+          <label class="filters__label" for="filter-rating">Рейтинг от</label>
+          <select class="filters__input" id="filter-rating" name="minRating">
+            <option value="0">Любой</option>
+            <option value="4">4.0 и выше</option>
+            <option value="4.4">4.4 и выше</option>
+            <option value="4.8">4.8</option>
+          </select>
+        </div>
+
+        <div class="filters__field">
+          <label class="filters__label" for="filter-sort">Сортировка</label>
+          <select class="filters__input" id="filter-sort" name="sort">
+            <option value="id">По номеру</option>
+            <option value="price-asc">Сначала дешевле</option>
+            <option value="price-desc">Сначала дороже</option>
+            <option value="rating-desc">По рейтингу</option>
+          </select>
+        </div>
+
+        <button class="button button--ghost filters__reset" type="reset">Сбросить фильтры</button>
+      </form>
+    </aside>
+
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog__head">
+        <h1 class="catalog__title" id="catalog-title">Каталог учебных товаров</h1>
+        <p class="catalog__count" id="catalog-count" aria-live="polite">Загрузка…</p>
+      </div>
+
+      <div class="catalog__grid" id="catalog-grid">
+        <!-- Карточки создаются в js/catalog.js из data/catalog.csv -->
+      </div>
+
+      <div class="state state--empty" id="state-empty" hidden>
+        <p class="state__title">Ничего не найдено</p>
+        <p class="state__text">Измените условия фильтра или сбросьте его.</p>
+        <button class="button" type="button" id="state-empty-reset">Сбросить фильтры</button>
+      </div>
+
+      <div class="state state--error" id="state-error" role="alert" hidden>
+        <p class="state__title">Не удалось загрузить каталог</p>
+        <p class="state__text" id="state-error-text"></p>
+      </div>
+    </section>
+
+    <section class="info" id="about" aria-labelledby="info-title">
+      <h2 class="info__title" id="info-title">О каталоге</h2>
+      <dl class="info__stats" id="info-stats">
+        <!-- Сводка считается по данным catalog.csv -->
+      </dl>
+      <p class="info__note">Данные: <code>data/catalog.csv</code>, оформление: <code>data/theme.json</code>. Изображения карточек — <code>images/product-0N.svg</code> по категории товара.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="site-footer__inner">
+      <p>Практическая работа №2 · ТРПО · 2026</p>
+      <p>CSS Grid, Flexbox и SCSS</p>
+    </div>
+  </footer>
+
+  <template id="product-card-template">
+    <article class="product-card">
+      <img class="product-card__image" alt="" width="900" height="520" loading="lazy">
+      <div class="product-card__body">
+        <span class="badge"></span>
+        <h3 class="product-card__title"></h3>
+        <div class="product-card__rating">
+          <span class="rating" aria-hidden="true"></span>
+          <span class="product-card__rating-value"></span>
+        </div>
+        <div class="product-card__footer">
+          <p class="product-card__price"></p>
+          <button class="button button--small" type="button">В корзину</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="js/catalog.js"></script>
+</body>
+</html>
