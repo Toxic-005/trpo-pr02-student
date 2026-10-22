@@ -103,6 +103,7 @@ code {
   flex: 1;
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
   grid-template-areas: "filters catalog" "filters info";
   align-items: start;
   gap: 1.5rem;
@@ -143,6 +144,7 @@ code {
 @media (max-width: 768px) {
   .page {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
     grid-template-areas: "filters" "catalog" "info";
     gap: 1rem;
     padding-block: 1rem;

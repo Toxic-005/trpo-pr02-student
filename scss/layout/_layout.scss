@@ -46,6 +46,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: $sidebar-width minmax(0, 1fr);
+  grid-template-rows: auto 1fr; // лишняя высота уходит во вторую строку, а не в зазор
   grid-template-areas:
     "filters catalog"
     "filters info";
@@ -88,6 +89,7 @@
 @include respond-to($bp-tablet) {
   .page {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
     grid-template-areas:
       "filters"
       "catalog"
