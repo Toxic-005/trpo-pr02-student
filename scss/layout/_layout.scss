@@ -1,0 +1,122 @@
+// Каркас страницы: шапка, основная сетка, подвал.
+@use "../abstracts" as *;
+
+// --- Шапка ---
+.site-header {
+  background: $header-bg;
+  color: $surface;
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(1);
+    padding-block: space(1);
+  }
+
+  &__logo {
+    color: $surface;
+    font-size: rem(20px);
+    font-weight: 800;
+    text-decoration: none;
+  }
+}
+
+.site-nav {
+  display: flex;
+  gap: space(0.5);
+
+  &__link {
+    padding: space(0.25) space(0.75);
+    border-radius: $radius-pill;
+    color: $surface;
+    text-decoration: none;
+    transition: background $transition;
+
+    &:hover {
+      background: rgba($surface, 0.12);
+    }
+  }
+}
+
+// --- Основная сетка: фильтры слева, каталог и информация справа ---
+.page {
+  @include container;
+  flex: 1;
+  display: grid;
+  grid-template-columns: $sidebar-width minmax(0, 1fr);
+  grid-template-areas:
+    "filters catalog"
+    "filters info";
+  align-items: start;
+  gap: space(1.5);
+  padding-block: space(1.5);
+}
+
+.filters {
+  grid-area: filters;
+  position: sticky;
+  top: space(1);
+}
+
+.catalog {
+  grid-area: catalog;
+  min-width: 0;
+}
+
+.info {
+  grid-area: info;
+}
+
+// --- Подвал ---
+.site-footer {
+  background: $header-bg;
+  color: rgba($surface, 0.8);
+
+  &__inner {
+    @include container;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: space(0.5);
+    padding-block: space(1);
+  }
+}
+
+// Breakpoint 1 (768px): основная раскладка — панель фильтров переносится над карточками.
+@include respond-to($bp-tablet) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "filters"
+      "catalog"
+      "info";
+    gap: space(1);
+    padding-block: space(1);
+  }
+
+  .filters {
+    position: static;
+  }
+}
+
+// Breakpoint 2 (480px): навигация уходит под логотип и растягивается на всю ширину.
+@include respond-to($bp-mobile) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: space(0.5);
+    padding-block: space(0.75);
+  }
+
+  .site-nav {
+    justify-content: space-between;
+
+    &__link {
+      flex: 1;
+      text-align: center;
+      background: rgba($surface, 0.08);
+    }
+  }
+}

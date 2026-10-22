@@ -1,0 +1,16 @@
+{
+  "name": "trpo-pr02-student",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Практическая работа №2: адаптивный каталог на HTML и SCSS",
+  "type": "module",
+  "scripts": {
+    "theme": "node scripts/build-theme.mjs",
+    "build": "npm run theme && sass scss/styles.scss css/styles.css --no-source-map",
+    "watch": "npm run theme && sass scss/styles.scss css/styles.css --watch",
+    "start": "npx --yes serve -l 5173 ."
+  },
+  "devDependencies": {
+    "sass": "^1.80.6"
+  }
+}

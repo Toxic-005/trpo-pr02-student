@@ -1,0 +1,11 @@
+// Главный файл: подключает partial-файлы в порядке от общего к частному.
+// Сборка: npm run build -> css/styles.css
+
+@use "base/base";
+@use "layout/layout";
+@use "components/button";
+@use "components/badge";
+@use "components/filters";
+@use "components/product-card";
+@use "components/info";
+@use "components/states";

@@ -1,0 +1,95 @@
+// Панель фильтров.
+@use "../abstracts" as *;
+
+.filters {
+  @include panel(space(1.25));
+
+  &__title {
+    margin-bottom: space(1);
+    font-size: rem(20px);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: space(1);
+  }
+
+  &__group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: space(0.25);
+    padding: 0;
+    font-weight: 600;
+    font-size: rem(14px);
+  }
+
+  &__input {
+    width: 100%;
+    padding: space(0.5) space(0.75);
+    border: 1px solid $border;
+    border-radius: $radius-small;
+    background: $surface;
+    color: $text;
+    font: inherit;
+    @include focus-ring;
+  }
+
+  &__range {
+    width: 100%;
+    accent-color: $accent;
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(0.5);
+  }
+
+  &__option {
+    display: inline-flex;
+    align-items: center;
+    gap: space(0.375);
+    padding: space(0.25) space(0.75);
+    border: 1px solid $border;
+    border-radius: $radius-pill;
+    cursor: pointer;
+    font-size: rem(14px);
+
+    &:has(input:checked) {
+      border-color: $accent;
+      background: $accent-soft;
+      color: $accent;
+    }
+  }
+}
+
+// Breakpoint 1 (768px): панель над карточками, поля в две колонки.
+@include respond-to($bp-tablet) {
+  .filters__form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .filters__group {
+    grid-column: 1 / -1;
+  }
+
+  .filters__field--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+// Breakpoint 2 (480px): одна колонка полей.
+@include respond-to($bp-mobile) {
+  .filters__form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

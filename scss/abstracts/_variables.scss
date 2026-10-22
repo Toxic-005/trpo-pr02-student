@@ -1,0 +1,47 @@
+// Переменные проекта. Базовые значения приходят из data/theme.json (через _theme.scss),
+// производные цвета считаются здесь один раз и используются во всех компонентах.
+@use "sass:color";
+@use "theme";
+
+// --- Цвета (theme.json) ---
+$accent: theme.$theme-accent;
+$surface: theme.$theme-surface;
+$background: theme.$theme-background;
+$text: theme.$theme-text;
+
+// --- Производные цвета (встроенные функции Sass вместо ручных HEX) ---
+$text-muted: color.mix($text, $surface, 60%);
+$border: color.mix($text, $surface, 12%);
+$accent-soft: color.mix($accent, $surface, 12%);
+$accent-hover: color.adjust($accent, $lightness: -8%);
+$header-bg: $text;
+$danger: #d92d20;
+
+// Фон карточек по категориям — цвета взяты из images/product-0N.svg.
+$category-colors: (
+  "books": #fff3e8,
+  "courses": #eafaf0,
+  "tools": #eef2ff,
+);
+
+// --- Размеры (theme.json) ---
+$space: theme.$theme-space;        // 16px — шаг отступов
+$radius: theme.$theme-radius;      // 14px — базовый радиус
+$radius-small: $radius * 0.5;
+$radius-pill: 999px;
+
+// --- Сетка и контейнер ---
+$container-width: 1200px;
+$sidebar-width: 270px;
+$card-min-width: 220px;
+$card-min-width-dense: 160px;
+
+// --- Breakpoints ---
+$bp-tablet: 768px;   // перестройка основной раскладки
+$bp-mobile: 480px;   // плотность карточек и навигация
+
+// --- Типографика и эффекты ---
+$font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+$shadow: 0 6px 24px rgba($text, 0.06);
+$shadow-hover: 0 14px 32px rgba($text, 0.12);
+$transition: 0.2s ease;

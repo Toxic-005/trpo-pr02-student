@@ -1,0 +1,62 @@
+// Базовые стили: сброс, типографика, CSS custom properties.
+@use "../abstracts" as *;
+
+// CSS-переменные нужны там, где значение меняется в браузере во время работы
+// (например, --rating задаётся из JS для каждой карточки). Цвета темы
+// дублируются сюда из SCSS один раз — для DevTools и инлайновых стилей.
+:root {
+  --color-accent: #{$accent};
+  --color-text: #{$text};
+  --radius: #{$radius};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family;
+  line-height: 1.5;
+  color: $text;
+  background: $background;
+  overflow-wrap: anywhere; // длинные слова не создают горизонтальный скролл
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: $accent;
+  @include focus-ring;
+}
+
+code {
+  font-size: 0.9em;
+  padding: 0 space(0.25);
+  border-radius: $radius-small * 0.5;
+  background: $accent-soft;
+}
+
+[hidden] {
+  display: none !important;
+}

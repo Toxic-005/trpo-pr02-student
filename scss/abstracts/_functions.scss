@@ -1,0 +1,15 @@
+// Функции. Убирают повторение «$space * N» и ручной перевод px -> rem.
+@use "sass:math";
+@use "variables" as v;
+
+$base-font-size: 16px;
+
+/// Переводит пиксели в rem: rem(24px) -> 1.5rem.
+@function rem($px) {
+  @return math.div($px, $base-font-size) * 1rem;
+}
+
+/// Отступ, кратный шагу из theme.json: space(1.5) -> 1.5rem (24px).
+@function space($multiplier: 1) {
+  @return rem(v.$space * $multiplier);
+}

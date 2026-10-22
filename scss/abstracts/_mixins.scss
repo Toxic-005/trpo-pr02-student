@@ -1,0 +1,34 @@
+// Mixin-ы для повторяемых наборов свойств.
+@use "variables" as v;
+@use "functions" as f;
+
+/// Медиазапрос «до ширины»: @include respond-to(v.$bp-tablet) { ... }
+@mixin respond-to($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+/// Центрированный контейнер с ограничением ширины — шапка, страница, подвал.
+@mixin container($max-width: v.$container-width) {
+  width: 100%;
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: f.space(1);
+}
+
+/// Видимое состояние фокуса для клавиатуры — кнопки, ссылки, поля.
+@mixin focus-ring($color: v.$accent) {
+  &:focus-visible {
+    outline: 3px solid rgba($color, 0.45);
+    outline-offset: 2px;
+  }
+}
+
+/// Белая панель с радиусом и тенью — фильтры, карточки, информационный блок.
+@mixin panel($padding: f.space(1)) {
+  background: v.$surface;
+  border-radius: v.$radius;
+  box-shadow: v.$shadow;
+  padding: $padding;
+}

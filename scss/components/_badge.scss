@@ -1,0 +1,23 @@
+// Badge категории. Модификаторы генерируются циклом по карте $category-colors.
+@use "sass:color";
+@use "sass:map";
+@use "../abstracts" as *;
+
+.badge {
+  align-self: flex-start;
+  padding: space(0.125) space(0.625);
+  border-radius: $radius-pill;
+  background: $accent-soft;
+  color: $accent;
+  font-size: rem(13px);
+  font-weight: 600;
+}
+
+// .badge--books, .badge--courses, .badge--tools
+@each $slug, $bg in $category-colors {
+  .badge--#{$slug} {
+    background: $bg;
+    color: color.mix($text, $bg, 80%);
+    box-shadow: inset 0 0 0 1px color.adjust($bg, $lightness: -10%);
+  }
+}

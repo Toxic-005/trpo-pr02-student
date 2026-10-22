@@ -1,0 +1,5 @@
+// Точка входа модуля abstracts: остальные partial-файлы подключают его через
+// @use "../abstracts" as *; — переменные, функции и mixin-ы доступны без префикса.
+@forward "variables";
+@forward "functions";
+@forward "mixins";

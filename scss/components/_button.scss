@@ -1,0 +1,39 @@
+// Кнопка: основная, малая и «призрачная».
+@use "../abstracts" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(0.5);
+  padding: space(0.5) space(1);
+  border: 1px solid transparent;
+  border-radius: $radius-small;
+  background: $accent;
+  color: $surface;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background $transition, color $transition;
+  @include focus-ring;
+
+  &:hover {
+    background: $accent-hover;
+  }
+
+  &--small {
+    padding: space(0.375) space(0.75);
+    font-size: rem(14px);
+  }
+
+  &--ghost {
+    background: transparent;
+    border-color: $border;
+    color: $text;
+
+    &:hover {
+      background: $accent-soft;
+      color: $accent;
+    }
+  }
+}

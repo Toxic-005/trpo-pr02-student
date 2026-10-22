@@ -1,0 +1,40 @@
+// Информационный блок со сводкой по каталогу.
+@use "../abstracts" as *;
+
+.info {
+  @include panel(space(1.25));
+
+  &__title {
+    margin-bottom: space(1);
+    font-size: rem(20px);
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(140px), 1fr));
+    gap: space(0.75);
+    margin: 0 0 space(1);
+  }
+
+  &__stat {
+    padding: space(0.75);
+    border-radius: $radius-small;
+    background: $background;
+
+    dt {
+      color: $text-muted;
+      font-size: rem(13px);
+    }
+
+    dd {
+      margin: 0;
+      font-size: rem(20px);
+      font-weight: 700;
+    }
+  }
+
+  &__note {
+    color: $text-muted;
+    font-size: rem(14px);
+  }
+}
