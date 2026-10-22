@@ -1,0 +1,15 @@
+# Зависимости
+node_modules/
+
+# Карты исходников Sass (собираются локально)
+*.css.map
+
+# Редакторы и ОС
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Логи
+npm-debug.log*
