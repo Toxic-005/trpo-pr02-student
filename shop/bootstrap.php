@@ -9,9 +9,9 @@ spl_autoload_register(static function (string $class): void {
 require_once __DIR__ . '/src/helpers.php';
 
 use Shop\Core\{Application, JsonFile, Router, View, SessionStore};
-use Shop\Controller\{HomeController, CatalogController, ErrorController, CartController};
-use Shop\Repository\ProductRepository;
-use Shop\Service\CartService;
+use Shop\Controller\{HomeController, CatalogController, ErrorController, CartController, CheckoutController};
+use Shop\Repository\{ProductRepository, OrderRepository};
+use Shop\Service\{CartService, OrderValidator, CheckoutService};
 
 $view = new View(__DIR__ . '/views');
 $errors = new ErrorController($view);
@@ -27,6 +27,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 $session = new SessionStore($_SESSION);
 $cart = new CartService($products);
 $cartController = new CartController($view, $cart, $session);
+$validator = new OrderValidator(JsonFile::list(__DIR__ . '/data/pr10/delivery_methods.json'));
+$storage = getenv('SHOP_STORAGE') ?: __DIR__ . '/storage';
+$orders = new OrderRepository($storage, __DIR__ . '/data/pr10/orders_seed.json');
+$checkout = new CheckoutController($view, $session, $cart, new CheckoutService($cart, $validator, $orders), $validator);
 $view->setContext(static function () use ($session): array {
     $state = $session->get('cart', []);
     $count = is_array($state) ? array_sum(array_filter($state, 'is_int')) : 0;
@@ -42,4 +46,7 @@ $router->add('GET', '/cart', [$cartController, 'index']);
 $router->add('POST', '/cart/add', [$cartController, 'add']);
 $router->add('POST', '/cart/set', [$cartController, 'set']);
 $router->add('POST', '/cart/remove', [$cartController, 'remove']);
+$router->add('GET', '/checkout', [$checkout, 'index']);
+$router->add('POST', '/checkout', [$checkout, 'create']);
+$router->add('GET', '/order/success', [$checkout, 'success']);
 return new Application($router, $errors);
