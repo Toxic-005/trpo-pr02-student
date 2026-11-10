@@ -1,0 +1,29 @@
+[
+  {
+    "steps": [
+      "add:1",
+      "add:1",
+      "add:2"
+    ],
+    "expected": {
+      "1": 2,
+      "2": 1
+    }
+  },
+  {
+    "steps": [
+      "add:3",
+      "remove:3"
+    ],
+    "expected": {}
+  },
+  {
+    "steps": [
+      "add:4",
+      "set:4:3"
+    ],
+    "expected": {
+      "4": 3
+    }
+  }
+]
