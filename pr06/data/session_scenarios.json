@@ -1,0 +1,15 @@
+[
+  {
+    "scenario": "new_session",
+    "expected": "guest_or_default"
+  },
+  {
+    "scenario": "set_name",
+    "value": "Student A",
+    "expected": "stored"
+  },
+  {
+    "scenario": "clear",
+    "expected": "default"
+  }
+]
