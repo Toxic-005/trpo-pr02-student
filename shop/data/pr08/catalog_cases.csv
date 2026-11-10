@@ -1,0 +1,4 @@
+﻿case;category;sort;expected_min
+all;;name;20
+books;1;price;4
+unknown;99;name;0
