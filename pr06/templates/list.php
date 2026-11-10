@@ -1,0 +1,15 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Учебные заметки</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><span class="eyebrow">ТРПО / Практическая работа 06</span><h1>Учебные заметки</h1><p>Пользователь: <strong><?= e($name) ?></strong> · Избранных: <?= count($favorites) ?></p></header><main>
+<?php if ($flash !== null): ?><p class="success" role="status"><?= e($flash) ?></p><?php endif ?>
+<?php if ($error !== null): ?><p class="error" role="alert"><?= e($error) ?></p><?php endif ?>
+<?php if ($storageError !== null): ?><p class="error" role="alert"><?= e($storageError) ?></p><?php endif ?>
+<div class="columns"><section class="panel"><h2>Состояние пользователя</h2><p>Это учебный выбор имени, без авторизации. Заметки общие, имя и избранное сохраняются только в вашей сессии.</p>
+<form method="post" action="index.php?page=list"><input type="hidden" name="csrf" value="<?= e($csrf) ?>"><input type="hidden" name="action" value="set_name"><label for="name">Пользователь из users.json</label><select name="name" id="name">
+<?php foreach ($users as $user): ?><option <?= $name === $user['name'] ? 'selected' : '' ?>><?= e($user['name']) ?></option><?php endforeach ?></select><button>Сохранить имя</button></form>
+<form method="post" action="index.php?page=list"><input type="hidden" name="csrf" value="<?= e($csrf) ?>"><button class="secondary" name="action" value="clear">Очистить сессию</button></form></section>
+<section class="panel"><h2>Новая заметка</h2><form method="post" action="index.php?page=list"><input type="hidden" name="csrf" value="<?= e($csrf) ?>"><input type="hidden" name="action" value="add"><label for="title">Текст заметки</label><textarea id="title" name="title" rows="3" maxlength="200" required><?= e($title) ?></textarea><button <?= $storageError !== null ? 'disabled' : '' ?>>Добавить заметку</button></form><p class="muted">До 200 символов. Запись сохраняется в notes.json.</p></section></div>
+<section aria-labelledby="list-title"><h2 id="list-title">Список заметок · <?= count($notes) ?></h2>
+<?php if (!$notes && $storageError === null): ?><p class="empty">Заметок пока нет. Добавьте первую.</p><?php endif ?>
+<div class="cards"><?php foreach ($notes as $note): ?><article class="panel" data-id="<?= $note['id'] ?>"><span class="badge"><?= $note['done'] ? 'Выполнено' : 'В работе' ?></span><h3><?= e($note['title']) ?></h3><p class="muted">Заметка №<?= $note['id'] ?></p>
+<form method="post" action="index.php?page=list"><input type="hidden" name="csrf" value="<?= e($csrf) ?>"><input type="hidden" name="id" value="<?= $note['id'] ?>"><button class="secondary" name="action" value="favorite" aria-pressed="<?= in_array($note['id'], $favorites, true) ? 'true' : 'false' ?>"><?= in_array($note['id'], $favorites, true) ? 'Убрать из избранного' : 'В избранное' ?></button></form></article><?php endforeach ?></div></section>
+</main><footer>Практическая работа 6 · JSON, сессии и отдельный шаблон</footer></body></html>
