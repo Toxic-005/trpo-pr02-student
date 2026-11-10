@@ -1,0 +1,2 @@
+<section class="hero"><span class="eyebrow">Учиться через практику</span><h1><?= e($page['store_name']) ?></h1><p><?= e($page['tagline']) ?></p><a class="button" href="/catalog">Перейти в каталог →</a></section>
+<section aria-label="Преимущества" class="cards"><?php foreach ($page['benefits'] as $index => $benefit): ?><article class="panel"><span class="badge">0<?= $index + 1 ?></span><h2><?= e($benefit) ?></h2><p class="muted">Понятные шаги от выбора товара до результата.</p></article><?php endforeach ?></section>

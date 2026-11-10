@@ -1,0 +1,1 @@
+<section class="panel"><span class="eyebrow">О проекте</span><h1><?= e($page['store_name']) ?></h1><p><?= e($page['tagline']) ?>. Это учебный магазин, без реальных платежей.</p><p>Запрос проходит через Router, контроллер подготавливает данные, представление выводит HTML.</p><a href="/catalog">Открыть каталог</a></section>
