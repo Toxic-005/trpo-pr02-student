@@ -1,0 +1,7 @@
+﻿class;property;type;required
+Product;id;int;yes
+Product;name;string;yes
+Product;price;float;yes
+Product;categoryId;int;yes
+Category;id;int;yes
+Category;name;string;yes

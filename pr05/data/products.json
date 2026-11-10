@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Товар 1",
+    "price": 436.5,
+    "category_id": 2,
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Товар 2",
+    "price": 574.0,
+    "category_id": 3,
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Товар 3",
+    "price": 711.5,
+    "category_id": 1,
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "Товар 4",
+    "price": 849.0,
+    "category_id": 2,
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "Товар 5",
+    "price": 986.5,
+    "category_id": 3,
+    "active": false
+  },
+  {
+    "id": 6,
+    "name": "Товар 6",
+    "price": 1124.0,
+    "category_id": 1,
+    "active": true
+  },
+  {
+    "id": 7,
+    "name": "Товар 7",
+    "price": 1261.5,
+    "category_id": 2,
+    "active": true
+  },
+  {
+    "id": 8,
+    "name": "Товар 8",
+    "price": 1399.0,
+    "category_id": 3,
+    "active": true
+  },
+  {
+    "id": 9,
+    "name": "Товар 9",
+    "price": 1536.5,
+    "category_id": 1,
+    "active": true
+  },
+  {
+    "id": 10,
+    "name": "Товар 10",
+    "price": 1674.0,
+    "category_id": 2,
+    "active": false
+  },
+  {
+    "id": 11,
+    "name": "Товар 11",
+    "price": 1811.5,
+    "category_id": 3,
+    "active": true
+  },
+  {
+    "id": 12,
+    "name": "Товар 12",
+    "price": 1949.0,
+    "category_id": 1,
+    "active": true
+  }
+]
