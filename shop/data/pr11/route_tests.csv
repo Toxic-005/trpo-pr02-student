@@ -1,0 +1,6 @@
+﻿method;path;expected_status
+GET;/;200
+GET;/catalog;200
+GET;/cart;200
+GET;/unknown;404
+POST;/cart/add;302

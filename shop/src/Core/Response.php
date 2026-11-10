@@ -12,6 +12,9 @@ final class Response
         http_response_code($this->status);
         header('Content-Type: text/html; charset=utf-8');
         header('X-Content-Type-Options: nosniff');
+        header('Referrer-Policy: same-origin');
+        header('Cache-Control: no-store');
+        header("Content-Security-Policy: default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'");
         foreach ($this->headers as $name => $value) { header($name . ': ' . $value); }
         echo $this->body;
     }

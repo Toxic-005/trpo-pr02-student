@@ -1,0 +1,9 @@
+﻿item;required
+Single entry point;yes
+Router without HTML;yes
+Controllers choose views;yes
+Models without HTTP globals;yes
+Views without data access;yes
+Namespaces;yes
+Autoload;yes
+404 handler;yes

@@ -7,6 +7,10 @@ spl_autoload_register(static function (string $class): void {
     if (is_file($path)) { require $path; }
 });
 require_once __DIR__ . '/src/helpers.php';
+set_error_handler(static function (int $severity, string $message, string $file, int $line): bool {
+    if (!(error_reporting() & $severity)) { return false; }
+    throw new ErrorException($message, 0, $severity, $file, $line);
+});
 
 use Shop\Core\{Application, JsonFile, Router, View, SessionStore};
 use Shop\Controller\{HomeController, CatalogController, ErrorController, CartController, CheckoutController};
@@ -22,7 +26,8 @@ $products = $cartDataset ? new ProductRepository(__DIR__ . '/data/pr09/products.
 $catalog = new CatalogController($view, $products);
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_name($cartDataset ? 'shop_cart_fixture' : 'shop_catalog');
-    session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Lax', 'use_strict_mode' => true]);
+    session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Lax', 'use_strict_mode' => true,
+        'cookie_secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off']);
 }
 $session = new SessionStore($_SESSION);
 $cart = new CartService($products);

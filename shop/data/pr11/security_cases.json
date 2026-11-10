@@ -1,0 +1,14 @@
+[
+  {
+    "input": "<script>alert(1)</script>",
+    "expected": "escaped"
+  },
+  {
+    "qty": -1,
+    "expected": "rejected"
+  },
+  {
+    "product_id": 99999,
+    "expected": "not_found"
+  }
+]
