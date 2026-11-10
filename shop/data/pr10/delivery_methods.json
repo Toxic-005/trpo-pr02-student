@@ -1,0 +1,12 @@
+[
+  {
+    "id": "pickup",
+    "title": "Самовывоз",
+    "price": 0
+  },
+  {
+    "id": "courier",
+    "title": "Курьер",
+    "price": 450
+  }
+]

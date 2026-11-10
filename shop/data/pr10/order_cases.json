@@ -1,0 +1,25 @@
+[
+  {
+    "case": "empty",
+    "input": {},
+    "valid": false
+  },
+  {
+    "case": "bad_email",
+    "input": {
+      "name": "Иван",
+      "email": "bad",
+      "delivery": "courier"
+    },
+    "valid": false
+  },
+  {
+    "case": "ok",
+    "input": {
+      "name": "Иван",
+      "email": "ivan@example.test",
+      "delivery": "pickup"
+    },
+    "valid": true
+  }
+]
