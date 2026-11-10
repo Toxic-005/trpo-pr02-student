@@ -1,4 +1,4 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?= e($title) ?> · Учебный магазин</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="site-header"><a class="brand" href="/"><img src="/shop-logo.svg" alt="" width="42" height="42"><span>Учебный магазин<small>Практика разработки на PHP</small></span></a><nav aria-label="Основная навигация"><a href="/">Главная</a><a href="/catalog">Каталог</a><a href="/about">О магазине</a></nav></header>
+<header class="site-header"><a class="brand" href="/"><img src="/shop-logo.svg" alt="" width="42" height="42"><span>Учебный магазин<small>Практика разработки на PHP</small></span></a><nav aria-label="Основная навигация"><a href="/">Главная</a><a href="/catalog">Каталог</a><a href="/about">О магазине</a><a href="/cart">Корзина <span class="badge" data-cart-count><?= e($cartCount) ?></span></a></nav></header>
 <main><?php if ($flash !== null): ?><p class="success" role="status"><?= e($flash) ?></p><?php endif ?><?= $content ?></main>
 <footer>Учебный MVC-магазин · PHP без фреймворка</footer></body></html>
